@@ -1,0 +1,18 @@
+version: "3"
+
+# Define the services/containers to be run
+services:
+  # Define the broker service
+  broker-service:
+    build:
+      # Folder where the broker service is located
+      context: ./../broker
+      # File path to the dockerfile
+      dockerfile: ./../broker/broker.dockerfile
+    restart: always
+    # Map the broker service to port 8080
+    ports:
+      - "8080:80"
+    deploy:
+      mode: replicated
+      replicas: 1
